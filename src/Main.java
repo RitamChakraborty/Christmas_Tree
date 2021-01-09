@@ -2,7 +2,19 @@ public class Main {
     private static final Utils utils = new Utils();
 
     private static Node completeTree(String string) {
-        return null;
+        int n = string.length();
+
+        if (n == 0) {
+            return null;
+        } else if (n == 1) {
+            return new Node(string.charAt(0), null, null);
+        }
+
+        int length = n / 2;
+        String left = string.substring(0, length);
+        String right = string.substring(length + 1);
+
+        return new Node(string.charAt(length), completeTree(left), completeTree(right));
     }
 
     private static Node tree(String string) {
@@ -21,8 +33,7 @@ public class Main {
         int length = utils.getClosesPossibleCompleteBinaryTreeSize(string.length());
 
         if (length == n) {
-            // Todo: Complete binary tree
-            return null;
+            return completeTree(string);
         }
 
         String left = string.substring(0, length);
