@@ -40,17 +40,19 @@ public class Main {
         char middle = string.charAt(length);
         String right = string.substring(length + 1);
 
-        System.out.println("Left : " + left);
-
         return new Node(middle, tree(left), tree(right));
     }
 
     public static void main(String[] args) {
-        String string = "ABCDEFGHIJLKMN";
-        Node root = tree(string);
-        System.out.println(root);
+        String string = "ABCDEFGHIJLK";
         Graph graph = new Graph();
-        graph.inOrder(root);
+
+        for (int i = 0; i < string.length(); ++i) {
+            String substring = string.substring(0, string.length() - i);
+            Node node = tree(substring);
+            graph.inOrder(node);
+            System.out.println(" = " + substring);
+        }
 
 
 
