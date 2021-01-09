@@ -1,14 +1,55 @@
 public class Main {
-    public static void main(String[] args) {
-        Utils utils = new Utils();
-        String string = "ABCDEFGHIJLKMN";
+    private static final Utils utils = new Utils();
+
+    private static Node completeTree(String string) {
+        return null;
+    }
+
+    private static Node tree(String string) {
+        int n = string.length();
+
+        if (n == 0) {
+            return null;
+        } else if (n == 1) {
+            return new Node(string.charAt(0), null, null);
+        } else if (n == 2) {
+            return new Node(string.charAt(1), new Node(string.charAt(0), null, null), null);
+        } else if (n == 3) {
+            return new Node(string.charAt(1), new Node(string.charAt(0), null, null), new Node(string.charAt(2), null, null));
+        }
+
         int length = utils.getClosesPossibleCompleteBinaryTreeSize(string.length());
-        String string1 = string.substring(0, length);
+
+        if (length == n) {
+            // Todo: Complete binary tree
+            return null;
+        }
+
+        String left = string.substring(0, length);
         char middle = string.charAt(length);
-        String string2 = string.substring(length + 1);
-        System.out.println(string1);
-        System.out.println(string2);
-        System.out.println(middle);
+        String right = string.substring(length + 1);
+
+        System.out.println("Left : " + left);
+
+        return new Node(middle, tree(left), tree(right));
+    }
+
+    public static void main(String[] args) {
+        String string = "ABCDEFGHIJLKMN";
+        Node root = tree(string);
+        System.out.println(root);
+        Graph graph = new Graph();
+        graph.inOrder(root);
+
+
+
+
+
+
+
+
+
+
 
         /*
 
