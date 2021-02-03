@@ -19,4 +19,8 @@ public class Utils {
 
         return i;
     }
+
+    public int getMaxNodeSizeForDepth(int depth) {
+        return (int) Math.pow(2, depth);
+    }
 }
