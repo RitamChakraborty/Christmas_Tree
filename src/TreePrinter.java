@@ -29,17 +29,29 @@ public class TreePrinter {
                 int d = (maxDepth - depth);
                 int n = func(d);
 
-                StringBuilder stringBuilder1 = new StringBuilder();
+                if (d == 0) {
+                    stringBuilder.append(node);
 
-                stringBuilder1.append("_".repeat(Math.max(0, n)));
-                stringBuilder.append(stringBuilder1);
-                stringBuilder.append(node);
+                    if (i + 1 != nodes.size()) {
+                        if (i % 2 == 0) {
+                            stringBuilder.append("_-_");
+                        } else {
+                            stringBuilder.append("_");
+                        }
+                    }
+                } else {
+                    StringBuilder stringBuilder1 = new StringBuilder();
 
-                if (i != nodes.size() - 1) {
+                    stringBuilder1.append("_".repeat(Math.max(0, n)));
                     stringBuilder.append(stringBuilder1);
+                    stringBuilder.append(node);
 
-                    if (i % 2 == 0) {
-                        stringBuilder.append("-");
+                    if (i != nodes.size() - 1) {
+                        stringBuilder.append(stringBuilder1);
+
+                        if (i % 2 == 0) {
+                            stringBuilder.append("-");
+                        }
                     }
                 }
             }
