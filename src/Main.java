@@ -1,6 +1,3 @@
-import java.util.List;
-import java.util.Map;
-
 public class Main {
     private static final Utils utils = new Utils();
 
@@ -51,11 +48,10 @@ public class Main {
         Node root = tree(string);
         DepthMap depthMap = new DepthMap();
         depthMap.generateDepthMap(root);
-        Map<Integer, List<Character>> depthMap1 = depthMap.getDepthMap();
-        System.out.println(depthMap1);
+        TreePrinter treePrinter = new TreePrinter();
+        treePrinter.print(depthMap);
 
         /*
-
                                                        z
                                                       / \
                                                      /   \
