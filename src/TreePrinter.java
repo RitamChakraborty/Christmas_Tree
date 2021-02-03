@@ -48,10 +48,7 @@ public class TreePrinter {
 
                     if (i != nodes.size() - 1) {
                         stringBuilder.append(stringBuilder1);
-
-                        if (i % 2 == 0) {
-                            stringBuilder.append("-");
-                        }
+                        stringBuilder.append("-");
                     }
                 }
             }
