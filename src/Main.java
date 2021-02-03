@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.Map;
+
 public class Main {
     private static final Utils utils = new Utils();
 
@@ -44,25 +47,12 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        String string = "ABCDEFGHIJLK";
-        Graph graph = new Graph();
-
-        for (int i = 0; i < string.length(); ++i) {
-            String substring = string.substring(0, string.length() - i);
-            Node node = tree(substring);
-            graph.inOrder(node);
-            System.out.println(" = " + substring);
-        }
-
-
-
-
-
-
-
-
-
-
+        String string = "ABCDEFGHIJ";
+        Node root = tree(string);
+        DepthMap depthMap = new DepthMap();
+        depthMap.generateDepthMap(root);
+        Map<Integer, List<Character>> depthMap1 = depthMap.getDepthMap();
+        System.out.println(depthMap1);
 
         /*
 
