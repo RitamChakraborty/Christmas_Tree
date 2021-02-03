@@ -5,6 +5,16 @@ import java.util.Map;
 public class TreePrinter {
     private final Utils utils = new Utils();
 
+    private int func(int n) {
+        if (n == 0) {
+            return 1;
+        } else if (n == 1) {
+            return 2;
+        } else {
+            return func(n - 1) * 2 + 1;
+        }
+    }
+
     public void print(DepthMap depthMap) {
         Map<Integer, List<Character>> map = depthMap.getDepthMap();
         int maxDepth = Collections.max(map.keySet());
@@ -16,13 +26,20 @@ public class TreePrinter {
 
             for (int i = 0; i < nodes.size(); i++) {
                 Character node = nodes.get(i);
+                int d = (maxDepth - depth);
+                int n = func(d);
+
+                StringBuilder stringBuilder1 = new StringBuilder();
+
+                stringBuilder1.append("_".repeat(Math.max(0, n)));
+                stringBuilder.append(stringBuilder1);
                 stringBuilder.append(node);
 
-                if (i + 1 != nodes.size()) {
+                if (i != nodes.size() - 1) {
+                    stringBuilder.append(stringBuilder1);
+
                     if (i % 2 == 0) {
-                        stringBuilder.append("___");
-                    } else {
-                        stringBuilder.append(" ");
+                        stringBuilder.append("-");
                     }
                 }
             }
