@@ -64,7 +64,9 @@ public class TreePrinter {
                 for (int i = 0; i < m; ++i) {
                     String string = "_".repeat(2 * n + 2).repeat(nodes.size());
                     char[] chars = string.toCharArray();
+                    int k = j + 2 * (i + 1);
                     chars[j--] = '/';
+                    chars[k] = '\\';
                     string = new String(chars);
                     stringBuilder1.append(string).append("\n");
                 }
