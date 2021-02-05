@@ -20,7 +20,6 @@ public class TreePrinter {
         int maxDepth = Collections.max(map.keySet());
 
         for (Integer depth : map.keySet()) {
-            int maxNodesSize = utils.getMaxNodeSizeForDepth(depth);
             StringBuilder stringBuilder = new StringBuilder();
             List<Character> nodes = map.get(depth);
             int d = (maxDepth - depth);
@@ -34,21 +33,21 @@ public class TreePrinter {
 
                     if (i + 1 != nodes.size()) {
                         if (i % 2 == 0) {
-                            stringBuilder.append("_-_");
+                            stringBuilder.append("   ");
                         } else {
-                            stringBuilder.append("_");
+                            stringBuilder.append(" ");
                         }
                     }
                 } else {
                     StringBuilder stringBuilder1 = new StringBuilder();
 
-                    stringBuilder1.append("_".repeat(n));
+                    stringBuilder1.append(" ".repeat(n));
                     stringBuilder.append(stringBuilder1);
                     stringBuilder.append(node);
 
                     if (i != nodes.size() - 1) {
                         stringBuilder.append(stringBuilder1);
-                        stringBuilder.append("-");
+                        stringBuilder.append(" ");
                     }
                 }
             }
@@ -68,7 +67,7 @@ public class TreePrinter {
                 for (int i = 0; i < m; ++i) {
                     for (int b = 0; b < p; ++b) {
                         j = tempJ;
-                        String string = "_".repeat(2 * n + 2);
+                        String string = " ".repeat(2 * n + 2);
                         char[] chars = string.toCharArray();
                         int k = (j - i) + 2 * (i + 1);
                         chars[j - i] = '/';
