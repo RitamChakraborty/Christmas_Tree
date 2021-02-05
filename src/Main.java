@@ -44,7 +44,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        String string = "ABCDEFGHIJKLMNOPQRSTUV";
+        String string = "MERRYCHRISTMAS";
         Node root = tree(string);
         DepthMap depthMap = new DepthMap();
         depthMap.generateDepthMap(root);

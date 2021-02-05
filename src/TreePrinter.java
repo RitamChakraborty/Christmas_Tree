@@ -72,7 +72,11 @@ public class TreePrinter {
                         char[] chars = string.toCharArray();
                         int k = (j - i) + 2 * (i + 1);
                         chars[j - i] = '/';
-                        chars[k] = '\\';
+
+                        if (nextDepthNodesSize % 2 == 0 || b != p - 1) {
+                            chars[k] = '\\';
+                        }
+
                         string = new String(chars);
                         stringBuilder1.append(string);
                     }
