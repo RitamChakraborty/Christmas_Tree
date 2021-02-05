@@ -60,15 +60,22 @@ public class TreePrinter {
                 int m = func(d - 1);
                 int j = 2 * m;
                 j = d == 1 ? j - 1 : j;
+                int tempJ = j;
 
                 for (int i = 0; i < m; ++i) {
-                    String string = "_".repeat(2 * n + 2).repeat(nodes.size());
-                    char[] chars = string.toCharArray();
-                    int k = j + 2 * (i + 1);
-                    chars[j--] = '/';
-                    chars[k] = '\\';
-                    string = new String(chars);
-                    stringBuilder1.append(string).append("\n");
+
+                    for (int b = 0; b < nodes.size(); ++b) {
+                        j = tempJ;
+                        String string = "_".repeat(2 * n + 2);
+                        char[] chars = string.toCharArray();
+                        int k = (j - i) + 2 * (i + 1);
+                        chars[j - i] = '/';
+                        chars[k] = '\\';
+                        string = new String(chars);
+                        stringBuilder1.append(string);
+                    }
+
+                    stringBuilder1.append("\n");
                 }
 
                 System.out.print(stringBuilder1.toString());
