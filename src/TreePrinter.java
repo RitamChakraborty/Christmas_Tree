@@ -1,7 +1,6 @@
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.StringJoiner;
 
 public class TreePrinter {
     private final Utils utils = new Utils();
@@ -54,17 +53,23 @@ public class TreePrinter {
                 }
             }
 
-            System.out.println(stringBuilder.toString());
+            System.out.print(stringBuilder.toString());
 
             if (d != 0) {
-                StringJoiner stringJoiner = new StringJoiner("\n");
+                StringBuilder stringBuilder1 = new StringBuilder("\n");
                 int m = func(d - 1);
+                int j = 2 * m;
+                j = d == 1 ? j - 1 : j;
 
                 for (int i = 0; i < m; ++i) {
-                    stringJoiner.add("_".repeat(n));
+                    String string = "_".repeat(2 * n + 2).repeat(nodes.size());
+                    char[] chars = string.toCharArray();
+                    chars[j--] = '/';
+                    string = new String(chars);
+                    stringBuilder1.append(string).append("\n");
                 }
 
-                System.out.println(stringJoiner);
+                System.out.print(stringBuilder1.toString());
             }
         }
     }
