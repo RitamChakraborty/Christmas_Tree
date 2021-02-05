@@ -1,6 +1,7 @@
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
 public class TreePrinter {
     private final Utils utils = new Utils();
@@ -23,11 +24,11 @@ public class TreePrinter {
             int maxNodesSize = utils.getMaxNodeSizeForDepth(depth);
             StringBuilder stringBuilder = new StringBuilder();
             List<Character> nodes = map.get(depth);
+            int d = (maxDepth - depth);
+            int n = func(d);
 
             for (int i = 0; i < nodes.size(); i++) {
                 Character node = nodes.get(i);
-                int d = (maxDepth - depth);
-                int n = func(d);
 
                 if (d == 0) {
                     stringBuilder.append(node);
@@ -42,7 +43,7 @@ public class TreePrinter {
                 } else {
                     StringBuilder stringBuilder1 = new StringBuilder();
 
-                    stringBuilder1.append("_".repeat(Math.max(0, n)));
+                    stringBuilder1.append("_".repeat(n));
                     stringBuilder.append(stringBuilder1);
                     stringBuilder.append(node);
 
@@ -54,6 +55,17 @@ public class TreePrinter {
             }
 
             System.out.println(stringBuilder.toString());
+
+            if (d != 0) {
+                StringJoiner stringJoiner = new StringJoiner("\n");
+                int m = func(d - 1);
+
+                for (int i = 0; i < m; ++i) {
+                    stringJoiner.add("_".repeat(n));
+                }
+
+                System.out.println(stringJoiner);
+            }
         }
     }
 }
