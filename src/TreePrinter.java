@@ -57,14 +57,16 @@ public class TreePrinter {
 
             if (d != 0) {
                 StringBuilder stringBuilder1 = new StringBuilder("\n");
+                int nextDepthNodesSize = map.get(depth + 1).size();
+                int p = nextDepthNodesSize % 2 == 0 ? nextDepthNodesSize / 2 : nextDepthNodesSize / 2 + 1;
+
                 int m = func(d - 1);
                 int j = 2 * m;
                 j = d == 1 ? j - 1 : j;
                 int tempJ = j;
 
                 for (int i = 0; i < m; ++i) {
-
-                    for (int b = 0; b < nodes.size(); ++b) {
+                    for (int b = 0; b < p; ++b) {
                         j = tempJ;
                         String string = "_".repeat(2 * n + 2);
                         char[] chars = string.toCharArray();
