@@ -1,29 +1,23 @@
+package service;
+
+import model.DepthMap;
+import util.Utils;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-public class TreePrinter {
-    private final Utils utils = new Utils();
-
-    private int func(int n) {
-        if (n == 0) {
-            return 1;
-        } else if (n == 1) {
-            return 2;
-        } else {
-            return func(n - 1) * 2 + 1;
-        }
-    }
-
-    public void print(DepthMap depthMap) {
-        Map<Integer, List<Character>> map = depthMap.getDepthMap();
+public class TreePrinterService {
+    public String getDiagram(DepthMap depthMap) {
+        StringBuilder treeDiagram = new StringBuilder();
+        Map<Integer, List<Character>> map = depthMap.getMap();
         int maxDepth = Collections.max(map.keySet());
 
         for (Integer depth : map.keySet()) {
             StringBuilder stringBuilder = new StringBuilder();
             List<Character> nodes = map.get(depth);
             int d = (maxDepth - depth);
-            int n = func(d);
+            int n = Utils.spacerCount(d);
 
             for (int i = 0; i < nodes.size(); i++) {
                 Character node = nodes.get(i);
@@ -57,7 +51,7 @@ public class TreePrinter {
                 int nextDepthNodesSize = map.get(depth + 1).size();
                 int p = nextDepthNodesSize % 2 == 0 ? nextDepthNodesSize / 2 : nextDepthNodesSize / 2 + 1;
 
-                int m = func(d - 1);
+                int m = Utils.spacerCount(d - 1);
                 int j = 2 * m;
                 j = d == 1 ? j - 1 : j;
                 int tempJ = j;
@@ -84,7 +78,9 @@ public class TreePrinter {
                 stringBuilder.append(stringBuilder1);
             }
 
-            System.out.print(stringBuilder);
+            treeDiagram.append(stringBuilder);
         }
+
+        return treeDiagram.toString();
     }
 }
