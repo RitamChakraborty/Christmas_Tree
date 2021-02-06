@@ -52,8 +52,6 @@ public class TreePrinter {
                 }
             }
 
-            System.out.print(stringBuilder.toString());
-
             if (d != 0) {
                 StringBuilder stringBuilder1 = new StringBuilder("\n");
                 int nextDepthNodesSize = map.get(depth + 1).size();
@@ -83,8 +81,10 @@ public class TreePrinter {
                     stringBuilder1.append("\n");
                 }
 
-                System.out.print(stringBuilder1.toString());
+                stringBuilder.append(stringBuilder1);
             }
+
+            System.out.print(stringBuilder);
         }
     }
 }
